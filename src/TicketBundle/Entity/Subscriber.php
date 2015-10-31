@@ -37,6 +37,11 @@ class Subscriber {
     private $payment_state;
 
     /**
+     * @var string
+     */
+    private $total_price;
+
+    /**
      * @var \DateTime
      */
     private $created;
@@ -277,5 +282,29 @@ class Subscriber {
     public function getCommentary()
     {
         return $this->commentary;
+    }
+
+
+    /**
+     * Set total_price
+     *
+     * @param string $totalPrice
+     * @return Subscriber
+     */
+    public function setTotalPrice($totalPrice)
+    {
+        $this->total_price = $totalPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get total_price
+     *
+     * @return string 
+     */
+    public function getTotalPrice()
+    {
+        return $this->total_price;
     }
 }

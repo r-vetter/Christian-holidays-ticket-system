@@ -9,6 +9,15 @@
                 <a href="{{ path('ticket',{'id':ticket.id}) }}" class="btn btn-info"><i class="fa fa-arrow-left"></i> Terug</a>
             </div>
             {{ form_start(form) }}
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">
+                    Totaal bedrag
+                </label>
+                <div class="col-sm-9 ">
+                    <div class="checkbox">&euro; {{ item.totalPrice|number_format(2,',') }}</div>
+                </div>
+            </div>
             {{ form_widget(form) }}
             {{ form_end(form) }}
 

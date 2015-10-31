@@ -20,6 +20,7 @@ TicketBundle\Entity\Ticket:
             type: decimal
             precision: 10
             scale: 2
+            message: Your name cannot contain a letter
 
     oneToMany:
         subscribers:
