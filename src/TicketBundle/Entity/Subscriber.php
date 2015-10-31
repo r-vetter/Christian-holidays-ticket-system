@@ -134,10 +134,10 @@ class Subscriber {
     /**
      * Set payment_state
      *
-     * @param string $paymentState
-     * @return Subscriber
+     * @param int|string $paymentState
+     * @return $this 'created'|'order_submit'|'order_failed'|'order_pending'|'paid'
      */
-    public function setPaymentState($paymentState)
+    public function setPaymentState($paymentState = 'created'|'order_submit'|'order_failed'|'order_pending'|'paid')
     {
         $this->payment_state = $paymentState;
 

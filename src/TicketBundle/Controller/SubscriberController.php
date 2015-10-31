@@ -15,6 +15,7 @@ class SubscriberController extends Controller
             'created'       => 'Aangemaakt (Betaling nog niet verwerkt)',
             'order_submit'  => 'Betaling nog niet verwerkt',
             'order_failed'  => 'Mislukt',
+            'order_pending' => 'Betaling is in behandeling/ betaling onbekend',
             'paid'          => 'Betaald'
         );
 
@@ -129,6 +130,7 @@ class SubscriberController extends Controller
 
     public function frontendOverviewAction(Request $request)
     {
+        $sHtml = '';
         $subscriberId = $request->cookies->get('subscriber_id');
 
         $item = $this->getDoctrine()->getRepository('TicketBundle:Subscriber')->find($subscriberId);
@@ -136,13 +138,21 @@ class SubscriberController extends Controller
         $em = $this->getDoctrine()->getManager();
         $item->setPaymentState('order_submit');
         $item->setUpdated();
+
         $em->persist($item);
         $em->flush();
 
+        $orderId = $item->getId();
+        $price = $item->getTicket()->getPrice();
+        $totalPrice = $item->getNumberOfPersons() * $price;
+
         $kernel = $this->get('kernel');
+
+        require('omnikassa/start.php');
 
         return $this->render('@Ticket/Subscriber/overview.html.twig', array(
             'item' => $item,
+            'html_omnikassa' => $sHtml,
             'orderState' => $this->orderStates[$item->getPaymentState()],
             'debug' => $kernel->isDebug()
         ));
@@ -152,14 +162,45 @@ class SubscriberController extends Controller
     public function frontendConfirmationAction ($id){
 
         $item = $this->getDoctrine()->getRepository('TicketBundle:Subscriber')->find($id);
+        $sHtml = '';
+
+        require('omnikassa/return.php');
 
         $em = $this->getDoctrine()->getManager();
-        $item->setPaymentState('paid');
+
+        // Bepaal de transactie status, en bevestig deze aan de bezoeker
+        if(strcmp($sTransactionStatus, 'SUCCESS') === 0)
+        {
+            $item->setPaymentState('paid');
+            $sHtml = '<p>Uw betaling is met succes ontvangen.</p>';
+        }
+        elseif(strcmp($sTransactionStatus, 'PENDING') === 0)
+        {
+            $item->setPaymentState('order_pending');
+            $sHtml = '<p>Uw betaling is in behandeling.</p>';
+        }
+        elseif(strcmp($sTransactionStatus, 'CANCELLED') === 0)
+        {
+            $item->setPaymentState('order_failed');
+            $sHtml = '<p>Uw betaling is geannuleerd.<br><a href="' . htmlspecialchars($aSettings['website_url'] . $this->generateUrl('subscriber_frondend_overview',array('id' => $item->getId()))) . '">Probeer opnieuw te betalen.</a></p>';
+        }
+        elseif(strcmp($sTransactionStatus, 'EXPIRED') === 0)
+        {
+            $item->setPaymentState('order_failed');
+            $sHtml = '<p>Uw betaling is mislukt.<br><a href="' . htmlspecialchars($aSettings['website_url'] . $this->generateUrl('subscriber_frondend_overview',array('id' => $item->getId()))) . '">Probeer opnieuw te betalen.</a></p>';
+        }
+        else // if(strcmp($sTransactionStatus, 'FAILURE') === 0)
+        {
+            $item->setPaymentState('order_pending');
+            $sHtml = '<p>Uw betaling is mislukt.<br><a href="' . htmlspecialchars($aSettings['website_url'] . $this->generateUrl('subscriber_frondend_overview',array('id' => $item->getId()))) . '">Probeer opnieuw te betalen.</a></p>';
+        }
+
         $item->setUpdated();
         $em->persist($item);
         $em->flush();
 
         return $this->render('@Ticket/Subscriber/confirmation.html.twig', array(
+            'omnikassa_html' => $sHtml,
             'item' => $item
         ));
     }
