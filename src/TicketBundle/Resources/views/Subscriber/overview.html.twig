@@ -9,50 +9,63 @@
                     <a href="{{ path('subscriber_frondend_reset',{'id':item.ticket.id}) }}" class="btn btn-info"><i class="fa fa-refresh"></i> Opnieuw</a>
                 </div>
             {% endif %}
-
+            <h1>{{ item.ticket.title }}</h1>
             <div class="form-horizontal">
                 <div id="form">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">
+                        <label class="col-sm-3 control-label">
                             Voornaam
                         </label>
-                        <div class="col-sm-10 ">
+                        <div class="col-sm-9 ">
                             <div class="checkbox">{{ item.firstName }}</div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label" for="form_last_name">Achternaam</label>
-                        <div class="col-sm-10">
+                        <label class="col-sm-3 control-label" for="form_last_name">Achternaam</label>
+                        <div class="col-sm-9">
                             <div class="checkbox">{{ item.lastName }}</div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label " for="form_email">E-mail</label>
-                        <div class="col-sm-10">
+                        <label class="col-sm-3 control-label " for="form_email">E-mail</label>
+                        <div class="col-sm-9">
                             <div class="checkbox">{{ item.email }}</div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label " for="form_number_of_persons">Aantal personen</label>
-                        <div class="col-sm-10">
-                            <div class="checkbox">{{ item.numberOfPersons }}</div>
-                        </div>
-                    </div>
-                    <div class="form-group"><label class="col-sm-2 control-label" for="form_commentary">Opmerking</label>
-                        <div class="col-sm-10">
+                    <div class="form-group"><label class="col-sm-3 control-label" for="form_commentary">Opmerking</label>
+                        <div class="col-sm-9">
                             <div class="checkbox">{{ item.commentary }}</div>
                         </div>
                     </div>
-                    <div class="form-group"><label class="col-sm-2 control-label " for="form_payment_state">Betaal status</label>
-                        <div class="col-sm-10">
+                    <div class="form-group"><label class="col-sm-3 control-label " for="form_payment_state">Betaal status</label>
+                        <div class="col-sm-9">
                             <div class="checkbox">{{ orderState }}</div>
                         </div>
                     </div>
-                    <div class="form-group"><div class="col-sm-2"></div>
-                        <div class="col-sm-10">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label " for="form_number_of_persons">Aantal personen</label>
+                        <div class="col-sm-9">
+                            <div class="checkbox">{{ item.numberOfPersons }}</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label " for="form_number_of_persons">Prijs per persoon</label>
+                        <div class="col-sm-9">
+                            <div class="checkbox">&#8364; {{ item.ticket.price|number_format(2,',') }}</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label " for="form_number_of_persons">Totaal prijs incl. btw</label>
+                        <div class="col-sm-9">
+                            <div class="checkbox">&#8364; {{ (item.numberOfPersons * item.ticket.price)|number_format(2,',') }}</div>
+                        </div>
+                    </div>
+                    <div class="form-group"><div class="col-sm-3"></div>
+                        <div class="col-sm-9">
                             {% if debug %}
                                 <div class="row">
-                                    <a href="{{ path('subscriber_frondend_confirmation',{'id':item.id}) }}" class="btn btn-info"><i class="fa fa-money"></i> betaal</a>
+                                    {{ html_omnikassa|raw }}
+                                    {#<a href="{{ path('subscriber_frondend_confirmation',{'id':item.id}) }}" class="btn btn-info"><i class="fa fa-money"></i> betaal</a>#}
                                 </div>
                             {% else %}
                                 no debug

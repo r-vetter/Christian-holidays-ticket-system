@@ -18,7 +18,6 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new PageBundle\PageBundle(),
             new TicketBundle\TicketBundle(),
-            new MusicBundle\MusicBundle(),
             new BaseBundle\BaseBundle(),
             new Acme\DemoBundle\AcmeDemoBundle(),
         );

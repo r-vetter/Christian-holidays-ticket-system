@@ -3,8 +3,9 @@
     {% block content %}
         {{ parent() }}
         <div>
-
-            Bedankt, u heeft betaald.<br>
+            <h1>{{ item.ticket.title }}</h1>
+            <h1>{{ item.firstName }}</h1>
+            <p>{{ omnikassa_html|raw }}</p><br>
 
         </div>
     {% endblock %}
