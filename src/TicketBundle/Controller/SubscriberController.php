@@ -146,6 +146,10 @@ class SubscriberController extends Controller
         $price = $item->getTicket()->getPrice();
         $totalPrice = $item->getNumberOfPersons() * $price;
 
+        $item->setTotalPrice($totalPrice);
+
+        $em->persist($item);
+        $em->flush();
         $kernel = $this->get('kernel');
 
         require('omnikassa/start.php');

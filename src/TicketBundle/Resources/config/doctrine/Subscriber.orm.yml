@@ -30,6 +30,12 @@ TicketBundle\Entity\Subscriber:
             type: string
             length: 255
 
+        total_price:
+            type: decimal
+            precision: 10
+            scale: 2
+            nullable: true
+
         created:
             type: datetime
             gedmo:

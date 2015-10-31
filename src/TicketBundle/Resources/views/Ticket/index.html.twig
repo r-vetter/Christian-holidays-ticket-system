@@ -34,10 +34,10 @@
                             {#<i class="fa fa-arrows"></i>#}
                             {#</th>#}
                             <td scope="row">{{ item.id }}</td>
-                            <td><a href="{{ path('subscriber_edit', {'id': item.id}) }}">{{ item.firstname }}</a></td>
+                            <td><a href="{{ path('subscriber_edit', {'id': item.id}) }}">{{ item.firstname }} {{ item.lastname }}</a></td>
                             <td>{{ item.numberOfPersons }}</td>
                             <td>{{ item.created|date('Y-m-d H:i:s') }}</td>
-                            <td>{% if item.paymentState == 'paid' %}<span class="fa fa-check"></span>{% endif %}</td>
+                            <td>{% if item.paymentState == 'paid' %}<span class="fa fa-check"></span>{% else %}<span class="fa fa-remove"></span>{% endif %}</td>
                             <td><a href="{{ path('subscriber_edit', {'id': item.id}) }}"><span class="fa fa-edit"></span> </a></td>
                         </tr>
                     {% endfor %}
