@@ -1,0 +1,6 @@
+
+index:
+    path: /{url}
+    defaults: { _controller: BaseBundle:Base:index }
+    requirements:
+            url: .+|.*

@@ -1,0 +1,60 @@
+{% extends '::base.admin.html.twig' %}
+
+{% block meta_title %}{{ parent() }} | Inschrijvingen{% endblock %}
+
+    {% block content %}
+        {{ parent() }}
+
+        <div >
+            <a href="{{ path('ticket_edit', {'id': ticket.id}) }}" class="btn btn-info"><i class="fa fa-cog"></i> Ticket instellingen</a>
+            <a href="{{ path('subscriber_edit') }}" class="btn btn-success"><span class="fa fa-plus"></span> Inschrijving toevoegen</a>
+        </div>
+        <form method="post">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        {#<th class="mini"><input type="checkbox" id="selectall"/></th>#}
+                        <th class="mini">#</th>
+                        <th>Naam</th>
+                        <th>Aantal personen</th>
+                        <th colspan>Datum</th>
+                        <th>Betaald</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody id="sortable">
+                    {% for item in items %}
+                        <tr class="item">
+                            {#<th scope="row">
+                                <input class="page_items" multiple rel="test" list="true" type="checkbox" name="selected_items[]" value="{{ item.id }}">
+                            </th>#}
+
+                            {#<th class="move">#}
+                            {#<i class="fa fa-arrows"></i>#}
+                            {#</th>#}
+                            <td scope="row">{{ item.id }}</td>
+                            <td><a href="{{ path('subscriber_edit', {'id': item.id}) }}">{{ item.firstname }}</a></td>
+                            <td>{{ item.numberOfPersons }}</td>
+                            <td>{{ item.created|date('Y-m-d H:i:s') }}</td>
+                            <td>{% if item.paymentState == 'paid' %}<span class="fa fa-check"></span>{% endif %}</td>
+                            <td><a href="{{ path('subscriber_edit', {'id': item.id}) }}"><span class="fa fa-edit"></span> </a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            {#<input type="submit" tabindex="-1" class="btn" name="deletePages" value="Verwijderen"/>#}
+        </form>
+    {% endblock %}
+
+{% block javascripts_ready %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function() {
+
+
+        });
+    </script>
+{% endblock %}

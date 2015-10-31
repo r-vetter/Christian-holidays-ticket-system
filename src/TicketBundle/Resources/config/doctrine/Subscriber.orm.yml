@@ -1,0 +1,50 @@
+TicketBundle\Entity\Subscriber:
+    type: entity
+    table: t_subscriber
+    repositoryClass: TicketBundle\Entity\SubscriberRepository
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        first_name:
+            type: string
+            length: 255
+
+        last_name:
+            type: string
+            length: 255
+
+        email:
+            type: string
+            length: 255
+
+        number_of_persons:
+            type: integer
+            nullable: true
+
+        commentary:
+            type: text
+
+        payment_state:
+            type: string
+            length: 255
+
+        created:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updated:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+
+
+    manyToOne:
+        ticket:
+          targetEntity: TicketBundle\Entity\Ticket
+          joinColumn:
+            name: ticket_id
+            referencedColumnName: id

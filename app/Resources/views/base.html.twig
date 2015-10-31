@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>{% block meta_title %}Svk{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}{% endblock %}">
+    <meta name="keywords" content="{% block meta_tags %}{% endblock %}">
+
+    <link href="{{ asset('bundles/base/assets/css/bootstrap.min.css') }}" rel="stylesheet" />
+    {% block stylesheets %}
+        <link href="{{ asset('bundles/base/assets/css/main.css') }}" rel="stylesheet" />
+    {% endblock %}
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+{% block body %}
+    {% block content %}{% endblock %}
+    <div class="container-fluid">
+        <div class="col-sm-12">
+            <div class="content-add">Blok toevoegen</div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="">
+            <div class="col-sm-3"><div class="content-add" style="height: 200px">Blok toevoegen</div></div>
+            <div class="col-sm-6" >
+                <div class="content-add">Blok toevoegen</div>
+                <div class="block">
+                    <address>
+                        <strong>Twitter, Inc.</strong><br>
+                        795 Folsom Ave, Suite 600<br>
+                        San Francisco, CA 94107<br>
+                        <abbr title="Phone">P:</abbr> (123) 456-7890
+                    </address>
+
+                    <address>
+                        <strong>Full Name</strong><br>
+                        <a href="mailto:#">first.last@example.com</a>
+                    </address>
+                </div>
+                <div class="content-add">Blok toevoegen</div>
+            </div>
+            <div class="col-sm-3"><div class="content-add" style="height: 200px">Blok toevoegen</div></div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="col-sm-12">
+            <div class="content-add">Blok toevoegen</div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/base/assets/js/jquery-2.1.4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/base/assets/js/jquery-ui.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/base/assets/js/jquery-ui.touch-punch.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/base/assets/js/bootstrap.min.js') }}" ></script>
+
+    <script type="text/javascript" src="{{ asset('bundles/base/assets/js/functions.front-edit.js') }}" ></script>
+{% endblock %}
+</body>
+</html>

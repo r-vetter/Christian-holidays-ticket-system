@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+    {% block content %}
+        {{ parent() }}
+    {% endblock %}
+
+    {% if(page.metatags) %}
+        {% block meta_title %}{{ parent() }} | {{ page.metatitle }}{% endblock %}
+    {% endif %}
+    {% if(page.metadescription) %}
+        {% block meta_description %}{{ page.metadescription }}{% endblock %}
+    {% endif %}
+    {% if(page.metatags) %}
+        {% block meta_tags %}{{ page.metatags }}{% endblock %}
+    {% endif %}

@@ -1,0 +1,27 @@
+TicketBundle\Entity\Ticket:
+    type: entity
+    table: t_ticket
+    repositoryClass: TicketBundle\Entity\TicketRepository
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+
+    fields:
+
+        external:
+            type: integer
+
+        title:
+            type: string
+            length: 255
+
+        price:
+            type: decimal
+            precision: 10
+            scale: 2
+
+    oneToMany:
+        subscribers:
+            targetEntity: Subscriber
+            mappedBy: ticket

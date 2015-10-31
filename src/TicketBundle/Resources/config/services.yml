@@ -1,0 +1,10 @@
+services:
+    ticket.form.type.prefixed_text:
+        class: TicketBundle\Form\Type\PrefixedTextType
+        tags:
+            - { name: form.type, alias: prefixed_text }
+
+    ticket.form.type.suffixed_text:
+        class: TicketBundle\Form\Type\SuffixedTextType
+        tags:
+            - { name: form.type, alias: suffixed_text }

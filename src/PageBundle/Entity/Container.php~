@@ -1,0 +1,106 @@
+<?php
+namespace PageBundle\Entity;
+
+class Container
+{    
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var boolean
+     */
+    private $full_width;
+
+    /**
+     * @var integer
+     */
+    private $position;
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set full_width
+     *
+     * @param boolean $fullWidth
+     * @return Container
+     */
+    public function setFullWidth($fullWidth)
+    {
+        $this->full_width = $fullWidth;
+
+        return $this;
+    }
+
+    /**
+     * Get full_width
+     *
+     * @return boolean 
+     */
+    public function getFullWidth()
+    {
+        return $this->full_width;
+    }
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     * @return Container
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer 
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+    /**
+     * @var entity
+     */
+    private $Page;
+
+
+    /**
+     * Set Page
+     *
+     * @param \entity $page
+     * @return Container
+     */
+    public function setPage(\entity $page)
+    {
+        $this->Page = $page;
+
+        return $this;
+    }
+
+    /**
+     * Get Page
+     *
+     * @return \entity 
+     */
+    public function getPage()
+    {
+        return $this->Page;
+    }
+}

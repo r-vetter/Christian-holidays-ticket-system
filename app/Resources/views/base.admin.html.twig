@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>{% block meta_title %}Beheerder{% endblock %}</title>
+
+    {% block stylesheets %}
+        {% stylesheets 'bundles/base/assets/css/*' filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    {% endblock %}
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+{% block body %}
+    {#<header class="menu" id="top" role="banner">
+        {% block menu %}
+            <div class="container">
+                <div class="navbar-header">
+                    {% block menu_prefix %}
+                        <a href="../" class="navbar-brand">Paneel</a>
+                    {% endblock %}
+                </div>
+                <nav id="bs-navbar" >
+                    <ul class="nav navbar-nav">
+                        <li class="{% if app.request.attributes.get('_route') == 'menu' %}active{% endif %}">
+                            &#123;&#35;{{ dump(app.request.attributes.get('_route')) }}&#35;&#125;
+                            <a href="{{ path('page') }}">Pagina's</a>
+                        </li>
+                        <li class="{% if app.request.attributes.get('_route') == 'music' %}active{% endif %}">
+                            <a href="{{ path('music') }}">Muziek</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#" >Gebruiker</a></li>
+                    </ul>
+                </nav>
+            </div>
+        {% endblock %}
+    </header>#}
+    <div class="wrapper">
+        {% block wrapper %}
+            <div class="container">
+                {% block content %}{% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/base/assets/js/jquery-2.1.4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/base/assets/js/jquery-ui.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/base/assets/js/jquery-ui.touch-punch.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/base/assets/js/bootstrap.min.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/base/assets/js/functions.admin.js') }}" ></script>
+{% endblock %}
+
+{% block javascripts_ready %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,16 @@
+base:
+    resource: "@PageBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+page:
+    resource: "@PageBundle/Resources/config/routing.yml"
+    prefix:   /admin/page
+
+music:
+    resource: "@MusicBundle/Resources/config/routing.yml"
+    prefix:   /admin/music
+
+index:
+    resource: "@TicketBundle/Resources/config/routing.yml"
+    prefix:   /
+

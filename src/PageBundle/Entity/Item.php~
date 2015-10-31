@@ -1,0 +1,194 @@
+<?php
+namespace MenuBundle\Entity;
+
+class Item
+{    
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $title;
+
+    /**
+     * @var string
+     */
+    private $type;
+
+    /**
+     * @var integer
+     */
+    private $url;
+
+    /**
+     * @var string
+     */
+    private $meta_title;
+
+    /**
+     * @var string
+     */
+    private $meta_description;
+
+    /**
+     * @var string
+     */
+    private $position;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return Item
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return Item
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string 
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+
+    /**
+     * Set url
+     *
+     * @param integer $url
+     * @return Item
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return integer 
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+
+    /**
+     * Set meta_title
+     *
+     * @param string $metaTitle
+     * @return Item
+     */
+    public function setMetaTitle($metaTitle)
+    {
+        $this->meta_title = $metaTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get meta_title
+     *
+     * @return string 
+     */
+    public function getMetaTitle()
+    {
+        return $this->meta_title;
+    }
+
+
+
+    /**
+     * Set meta_description
+     *
+     * @param string $metaDescription
+     * @return Item
+     */
+    public function setMetaDescription($metaDescription)
+    {
+        $this->meta_description = $metaDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get meta_description
+     *
+     * @return string
+     */
+    public function getMetaDescription()
+    {
+        return $this->meta_description;
+    }
+
+    /**
+     * Set position
+     *
+     * @param string $position
+     * @return Item
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return string
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+}

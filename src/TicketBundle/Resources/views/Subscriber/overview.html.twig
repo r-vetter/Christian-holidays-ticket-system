@@ -1,0 +1,66 @@
+{% extends '::base.admin.html.twig' %}
+{% block meta_title %}{{ item.firstName }} {{ item.lastName }} &#10140; Bevestiging {% endblock %}
+    {% block content %}
+        {{ parent() }}
+        <div>
+
+            {% if item.getFirstName() is not empty %}
+                <div class="row">
+                    <a href="{{ path('subscriber_frondend_reset',{'id':item.ticket.id}) }}" class="btn btn-info"><i class="fa fa-refresh"></i> Opnieuw</a>
+                </div>
+            {% endif %}
+
+            <div class="form-horizontal">
+                <div id="form">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Voornaam
+                        </label>
+                        <div class="col-sm-10 ">
+                            <div class="checkbox">{{ item.firstName }}</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="form_last_name">Achternaam</label>
+                        <div class="col-sm-10">
+                            <div class="checkbox">{{ item.lastName }}</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label " for="form_email">E-mail</label>
+                        <div class="col-sm-10">
+                            <div class="checkbox">{{ item.email }}</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label " for="form_number_of_persons">Aantal personen</label>
+                        <div class="col-sm-10">
+                            <div class="checkbox">{{ item.numberOfPersons }}</div>
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-sm-2 control-label" for="form_commentary">Opmerking</label>
+                        <div class="col-sm-10">
+                            <div class="checkbox">{{ item.commentary }}</div>
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-sm-2 control-label " for="form_payment_state">Betaal status</label>
+                        <div class="col-sm-10">
+                            <div class="checkbox">{{ orderState }}</div>
+                        </div>
+                    </div>
+                    <div class="form-group"><div class="col-sm-2"></div>
+                        <div class="col-sm-10">
+                            {% if debug %}
+                                <div class="row">
+                                    <a href="{{ path('subscriber_frondend_confirmation',{'id':item.id}) }}" class="btn btn-info"><i class="fa fa-money"></i> betaal</a>
+                                </div>
+                            {% else %}
+                                no debug
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    {% endblock %}

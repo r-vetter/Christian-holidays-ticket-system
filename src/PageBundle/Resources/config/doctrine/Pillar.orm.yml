@@ -1,0 +1,28 @@
+PageBundle\Entity\Pillar:
+    type: entity
+    table: pillar
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        offset:
+            type: integer
+
+        width:
+            type: integer
+
+        position:
+            type: integer
+
+    manyToOne:
+        row:
+          targetEntity: PageBundle\Entity\Row
+          joinColumn:
+            name: row_id
+            referencedColumnName: id
+
+    oneToMany:
+        blocks:
+            targetEntity: Block
+            mappedBy: pillar

@@ -1,0 +1,35 @@
+
+ticket:
+    path: /ticket/{id}
+    defaults: { _controller: TicketBundle:Ticket:index }
+    requirements:
+            id:  \d+
+
+ticket_edit:
+    path: /ticket/edit/{id}
+    defaults: { _controller: TicketBundle:Ticket:edit }
+    requirements:
+            id:  \d+
+
+subscriber_frondend_overview:
+    path: /overzicht
+    defaults: { _controller: TicketBundle:Subscriber:frontendOverview }
+
+subscriber_edit:
+    path: /subscriber/edit/{id}
+    defaults: { _controller: TicketBundle:Subscriber:edit, id:new }
+
+subscriber_frondend_reset:
+    path: /reset/{id}
+    defaults: { _controller: TicketBundle:Subscriber:frontendReset, id:false }
+
+subscriber_frondend_confirmation:
+    path: /confirmation/{id}
+    defaults: { _controller: TicketBundle:Subscriber:frontendConfirmation }
+    requirements:
+            id:  \d+
+
+subscriber_frondend_submit:
+    path: /{id}
+    defaults: { _controller: TicketBundle:Subscriber:frontendSubmit, id:false }
+

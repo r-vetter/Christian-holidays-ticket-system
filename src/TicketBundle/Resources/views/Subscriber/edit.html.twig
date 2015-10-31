@@ -1,0 +1,16 @@
+{% form_theme form '::backend_form_fields.html.twig' %}
+
+{% extends '::base.admin.html.twig' %}
+{% block meta_title %}{{ item.firstName }} {{ item.lastName }} &#10140; Ticket &#10140; {{ parent() }}{% endblock %}
+    {% block content %}
+        {{ parent() }}
+        <div>
+            <div class="row">
+                <a href="{{ path('ticket',{'id':ticket.id}) }}" class="btn btn-info"><i class="fa fa-arrow-left"></i> Terug</a>
+            </div>
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+
+        </div>
+    {% endblock %}

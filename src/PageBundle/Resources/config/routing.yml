@@ -1,0 +1,15 @@
+
+page:
+    path: /
+    defaults: { _controller: PageBundle:Page:index }
+
+page_edit:
+    path: /edit/{id}/{tab}
+    defaults: { _controller: PageBundle:Page:edit, tab:general }
+    requirements:
+            id:  \d+
+
+
+page_add:
+    path: /add
+    defaults: { _controller: PageBundle:Page:edit }

@@ -1,0 +1,18 @@
+.body{background-color: red;}
+.container-fluid{padding: 0;}
+.content-add{
+    border: 1px dotted;
+    border-radius: 30px;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    opacity: 0.2;
+    padding: 10px;
+    margin: 10px;
+    display: none;
+}
+.content-add:hover{
+    opacity: 1;
+}

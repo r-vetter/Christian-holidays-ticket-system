@@ -1,0 +1,25 @@
+PageBundle\Entity\Row:
+    type: entity
+    table: row
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        full_width:
+            type: integer
+
+        position:
+            type: integer
+
+    manyToOne:
+        page:
+          targetEntity: PageBundle\Entity\Page
+          joinColumn:
+            name: page_id
+            referencedColumnName: id
+
+    oneToMany:
+        pillar:
+            targetEntity: Pillar
+            mappedBy: row

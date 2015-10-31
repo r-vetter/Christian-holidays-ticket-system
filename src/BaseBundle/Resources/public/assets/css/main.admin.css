@@ -1,0 +1,61 @@
+.menu{
+    /*position: fixed;
+    z-index: 1000;
+    top: 0;*/
+    width: 100%;
+    border-bottom: solid 1px #000000;
+    background-color: #f9f9f9;
+}
+.bs-docs-nav {
+    margin: 0;
+}
+
+.wrapper{
+    /*margin-top: 50px;*/
+}
+
+.move{cursor:pointer;}
+tr .mini{width: 20px;}
+
+
+fieldset{margin-top: 20px;}
+
+.example-meta{padding: 0;font-family: arial,sans-serif;max-width: 512px;}
+.example-meta h3{
+    color:#1a0dab;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 1.2;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.example-meta .url{color:#006621;margin: 0;padding: 0;}
+.example-meta .url .translate1 img{width: 20px;height: 20px;margin-top: -3px;opacity: .2}
+.example-meta .url .translate2{color: rgb(26, 13, 171);cursor: pointer;}
+.example-meta .description{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 1.4;     /* fallback */
+    max-height: 32px;      /* fallback */
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+
+    color:#545454;
+    margin: 0;
+    padding: 0;
+    word-wrap: break-word;
+    font-size: small;
+}
+.example-meta .example-top{
+    margin-bottom: 23px;
+    background: -webkit-linear-gradient(#fff, #545454);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.form-control, .btn, .input-group-addon {
+    border-radius: 0;
+}

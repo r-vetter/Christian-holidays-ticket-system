@@ -1,0 +1,115 @@
+{% form_theme form '::backend_form_fields.html.twig' %}
+
+{% extends '::base.admin.html.twig' %}
+{% block meta_title %}{{ item.title }} &#10140; Page &#10140; {{ parent() }}{% endblock %}
+    {% block content %}
+        {{ parent() }}
+        <div>
+            <div class="row">
+                <a href="{{ path('page') }}" class="btn btn-info">Terug</a>
+                <a href="{{ path('page_edit', {'id': item.id,'tab': 'seo'}) }}" class="btn">Seo</a>
+                <a href="{{ path('page') }}" class="btn">Contact formulier</a>
+            </div>
+
+            {{ form_start(form) }}
+            {{ form_errors(form) }}
+{#{% if tab is 'genaral' %}#}
+            <fieldset class="row">
+                <legend>Pagina:</legend>
+                <div class="col-md-7">
+                    {{ form_row(form.title) }}
+                    {{ form_row(form.url) }}
+                    {#{{ form_row(form.url, { 'attr': {'class': 'c4'} }) }}#}
+                </div>
+            </fieldset>
+
+            <fieldset class="row">
+                <legend>Zoekmachine optimalisatie:</legend>
+                <div class="col-md-7 form-meta">
+                    {{ form_row(form.meta_title) }}
+                    {{ form_row(form.meta_tags) }}
+                    {{ form_row(form.meta_description) }}
+                </div>
+                <div class="col-md-5 example-meta">
+                    <div class="example-top">
+                        <h3 class="title">Lorem Ipsum</h3>
+                        <div class="url">
+                            loremipsum.nl/<span class="translate1"><img src="{{ asset('bundles/page/assets/images/admin/icons/google-translate-arrow-own.JPG') }}"></span><span class="translate2">Vertaal deze pagina</span>
+                        </div>
+                        <span class="description">L Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis ...</span>
+                    </div>
+
+                    <div>
+                        <h3 class="title js-title">{{ default_data.meta_title }}</h3>
+                        <div class="url js-url">
+                            {{ settings.base }}{{ form.url.vars.value }}
+                        </div>
+                        <span class="description js-description">{{ default_data.meta_description }}</span>
+                    </div>
+                </div>
+
+                {#{{ form_row(form.meta_description, { 'attr': {'class': 'c4'} }) }}#}
+
+            </fieldset>
+
+            <div class="row">
+                {{ form_widget(form.save, { 'attr': {'class': 'btn-primary'}}) }}
+            </div>
+            {{ form_end(form) }}
+
+        </div>
+    {% endblock %}
+
+{% block javascripts_ready %}
+    <style>.ui-autocomplete { max-height: 85px; overflow-y: hidden; overflow-x: hidden;}</style>
+    <script>
+
+        var availableTags = $.parseJSON('{{ urls|json_encode|raw  }}');
+
+        // push "/" after each url
+        for(var i=0;i<availableTags.length;i++){
+            availableTags[i] = availableTags[i] + "/";
+        }
+        $(document).ready(function() {
+            $( "#form_url" ).autocomplete({
+                source: availableTags
+            });
+
+            $('#form_meta_title,#form_url,#form_meta_description').keyup(function() {
+                updateExampleMeta();
+            });
+        });
+        function updateExampleMeta(){
+
+            // title
+            var form_meta_title = $('#form_meta_title');
+            var meta_title;
+            if(form_meta_title.val() == ''){
+                meta_title = '{{ parent_data.meta_title }}';
+            } else {
+                meta_title = form_meta_title.val();
+            }
+            $('.example-meta .js-title').html(meta_title);
+
+            // url
+            var urlInput = $('#form_url');
+            var urlValue = urlInput.val().replace(/ /g, '-').toLowerCase();
+            if(urlValue != urlInput.val()){
+                urlInput.val(urlValue);
+            }
+            $('.example-meta .js-url').html('{{ settings.base }}' + urlInput.val());
+
+
+            // description
+            var formMetaDescription = $('#form_meta_description');
+            var meta_description;
+            if(formMetaDescription.val() == ''){
+                meta_description = '{{ parent_data.meta_description }}';
+            } else {
+                meta_description = formMetaDescription.val();
+            }
+            $('.example-meta .js-description').html(meta_description);
+        }
+
+    </script>
+{% endblock %}

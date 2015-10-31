@@ -1,0 +1,50 @@
+PageBundle\Entity\Page:
+    type: entity
+    table: page
+    repositoryClass: PageBundle\Entity\PageRepository
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        title:
+            type: string
+            length: 255
+
+        url:
+            type: string
+            length: 255
+
+        type:
+            type: string
+            length: 255
+            nullable: true
+            options:
+                default: 'page'
+
+        meta_title:
+            type: string
+            length: 255
+            nullable: true
+
+        meta_description:
+            type: text
+            nullable: true
+
+        meta_tags:
+            type: string
+            length: 255
+            nullable: true
+
+        position:
+            type: integer
+            nullable: true
+            options:
+              default: 9999
+
+    oneToMany:
+        rows:
+            targetEntity: Row
+            mappedBy: page
+
+

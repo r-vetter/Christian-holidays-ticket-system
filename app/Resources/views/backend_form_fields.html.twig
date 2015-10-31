@@ -1,0 +1,41 @@
+{% extends "bootstrap_3_horizontal_layout.html.twig" %}
+
+{% block prefixed_text_widget -%}
+    {% if compound %}
+        {{- block('form_widget_compound') -}}
+    {% else %}
+        {{- block('prefixed_text_widget_simple') -}}
+    {% endif %}
+{%- endblock %}
+
+{% block prefixed_text_widget_simple -%}
+    {% if type is not defined or 'file' != type %}
+        {%- set attr = attr|merge({class: (attr.class|default('') ~ ' form-control')|trim}) -%}
+    {% endif %}
+
+    <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">{{ url_prefix }}</span>
+        {%- set type = type|default('text') -%}
+        <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+    </div>
+{% endblock -%}
+
+{% block suffixed_text_widget -%}
+    {% if compound %}
+        {{- block('form_widget_compound') -}}
+    {% else %}
+        {{- block('suffixed_text_widget_simple') -}}
+    {% endif %}
+{%- endblock %}
+
+{% block suffixed_text_widget_simple -%}
+    {% if type is not defined or 'file' != type %}
+        {%- set attr = attr|merge({class: (attr.class|default('') ~ ' form-control')|trim}) -%}
+    {% endif %}
+
+    <div class="input-group">
+        {%- set type = type|default('text') -%}
+        <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+        <span class="input-group-addon" id="basic-addon1">{{ url_suffixed }}</span>
+    </div>
+{% endblock -%}

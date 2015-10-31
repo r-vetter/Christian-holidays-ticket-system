@@ -1,0 +1,10 @@
+{% extends '::base.admin.html.twig' %}
+{% block meta_title %}{{ item.firstName }} {{ item.lastName }} &#10140; Bevestiging {% endblock %}
+    {% block content %}
+        {{ parent() }}
+        <div>
+
+            Bedankt, u heeft betaald.<br>
+
+        </div>
+    {% endblock %}

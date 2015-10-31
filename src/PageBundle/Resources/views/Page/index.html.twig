@@ -1,0 +1,72 @@
+{% extends '::base.admin.html.twig' %}
+
+{% block meta_title %}{{ parent() }} | Page{% endblock %}
+
+    {% block content %}
+        {{ parent() }}
+
+        <div >
+            <a href="{{ path('page_add') }}" class="btn btn-info">Toevoegen</a>
+        </div>
+        <form method="post">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th class="mini"><input type="checkbox" id="selectall"/></th>
+                        {#<th class="mini"></th>#}
+                        <th class="mini">#</th>
+                        <th>Titel</th>
+                        <th>Url</th>
+                    </tr>
+                    </thead>
+                    <tbody id="sortable">
+                    {% for item in pages %}
+                        <tr class="item">
+                            <th scope="row">
+                                <input class="page_items" multiple rel="test" list="true" type="checkbox" name="selected_items[]" value="{{ item.id }}">
+                            </th>
+
+                            {#<th class="move">#}
+                            {#<i class="fa fa-arrows"></i>#}
+                            {#</th>#}
+                            <th scope="row">{{ item.id }}</th>
+                            <td><a href="{{ path('page_edit', {'id': item.id}) }}" >{{ item.title }}</a></td>
+                            <td>{{ item.url }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <input type="submit" tabindex="-1" class="btn" name="deletePages" value="Verwijderen"/>
+        </form>
+    {% endblock %}
+
+{% block javascripts_ready %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function() {
+
+            $('#selectall').click(function(event) {
+                if(this.checked) {
+                    $('.page_items').each(function() {
+                        this.checked = true;
+                    });
+                }else{
+                    $('.page_items').each(function() {
+                        this.checked = false;
+                    });
+                }
+            });
+
+            $( "#sortable" ).sortable({
+                handle: '.move',
+                placeholder: "ui-sortable-handle"
+            });
+            $( "#sortable" ).disableSelection();
+
+
+        });
+    </script>
+{% endblock %}

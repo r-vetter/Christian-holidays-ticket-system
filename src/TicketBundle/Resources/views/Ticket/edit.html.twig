@@ -1,0 +1,23 @@
+{% form_theme form '::backend_form_fields.html.twig' %}
+
+{% extends '::base.admin.html.twig' %}
+{% block meta_title %}{{ item.title }} &#10140; Ticket &#10140; {{ parent() }}{% endblock %}
+    {% block content %}
+        {{ parent() }}
+        <div>
+            <div class="row">
+                <a href="{{ path('ticket',{'id':item.id}) }}" class="btn btn-info"><i class="fa fa-list"></i> Overzicht</a>
+            </div>
+            <div class="well" style="margin-top: 10px">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+            </div>
+            <div class="jumbotron">
+                <h1>Uw website</h1>
+                <p>Gebruik de volgende code om bezoekers te laten inschrijven op uw website:</p>
+                <p><code>&lt;iframe src="edit.html.twig"/> </code></p>
+            </div>
+
+        </div>
+    {% endblock %}
