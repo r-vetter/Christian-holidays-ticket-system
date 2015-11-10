@@ -27,7 +27,7 @@ class PageController extends Controller
 
     public function indexAction()
     {
-
+        /* test 12 */
 
 
         $request = $this->get('request')->request;
