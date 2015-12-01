@@ -16,11 +16,44 @@ TicketBundle\Entity\Ticket:
             type: string
             length: 255
 
-        price:
+        title_business:
+            type: string
+            length: 255
+
+        address:
+            type: string
+            length: 255
+
+        date_time:
+            type: string
+            length: 255
+
+        description:
+            type: text
+
+
+        price_1_title:
+            type: string
+            length: 255
+
+        price_1:
             type: decimal
             precision: 10
             scale: 2
-            message: Your name cannot contain a letter
+            message: Geen letters toegestaan.
+
+
+        price_2_title:
+            type: string
+            length: 255
+
+        price_2:
+            type: decimal
+            precision: 10
+            scale: 2
+            message: Geen letters toegestaan.
+
+
 
     oneToMany:
         subscribers:

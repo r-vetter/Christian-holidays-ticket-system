@@ -9,9 +9,12 @@
                 <a href="{{ path('ticket',{'id':item.id}) }}" class="btn btn-info"><i class="fa fa-list"></i> Overzicht</a>
             </div>
             <div class="well" style="margin-top: 10px">
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-            {{ form_end(form) }}
+                <div class="col-md-9 col-md-offset-3" style="padding-bottom: 10px">
+                    De volgende gegevens worden getoont op de ticket:
+                </div>
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                {{ form_end(form) }}
             </div>
             <div class="jumbotron">
                 <h1>Uw website</h1>

@@ -40,17 +40,25 @@ class TicketController extends Controller
         }
         $form = $this->createFormBuilder($item);
 
+        $defaultPriceTitle = $item->getPrice1Title() == '' ? 'Aantal personen' : $item->getPrice1Title();
         $form = $form
-            ->add('title', 'text', array('required'=> true, 'label' => 'Titel'))
-            ->add('price', 'money', array('required'=> false,'label' => 'Prijs per persoon'))
+            ->add('title', 'text', array('required'=> true, 'label' => 'Titel ticket'))
+            ->add('date_time', 'text', array('required'=> false, 'label' => 'Datum en tijd'))
+            ->add('title_business', 'text', array('required'=> false,'label' => 'Titel bedrijf'))
+            ->add('address', 'textarea', array('required'=> false,'label' => 'Adres'))
+            ->add('description', 'textarea', array('required'=> false,'label' => 'Extra omschrijving', 'attr' => array('style'=>'margin-bottom:20px;')))
+
+            ->add('price_1_title', 'text', array('required'=> true,'label' => 'Titel prijs 1', 'data'=> $defaultPriceTitle))
+            ->add('price1', 'money', array('required'=> true,'label' => 'Prijs 1'))
+            ->add('price_2_title', 'text', array('required'=> false,'label' => 'Titel prijs 2'))
+            ->add('price2', 'money', array('required'=> false,'label' => 'prijs 2'))
+
             ->add('save', 'submit', array('label' => 'Opslaan'))
             ->getForm();
 
         $form->handleRequest($request);
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $item->setTitle(trim($item->getTitle(),'/'));
-            $item->setPrice($item->getPrice());
             $em->persist($item);
             $em->flush();
         }

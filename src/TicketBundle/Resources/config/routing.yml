@@ -19,6 +19,12 @@ subscriber_edit:
     path: /subscriber/edit/{id}
     defaults: { _controller: TicketBundle:Subscriber:edit, id:new }
 
+subscriber_download_pdf:
+    path: /downloadTicketPdf/{id}
+    defaults: { _controller: TicketBundle:Subscriber:downloadPdf }
+    requirements:
+            id:  \d+
+
 subscriber_frondend_reset:
     path: /reset/{id}
     defaults: { _controller: TicketBundle:Subscriber:frontendReset, id:false }

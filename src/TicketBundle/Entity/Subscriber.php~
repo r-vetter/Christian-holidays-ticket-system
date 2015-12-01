@@ -27,9 +27,19 @@ class Subscriber {
     private $last_name;
 
     /**
+     * @var string
+     */
+    private $email;
+
+    /**
      * @var integer
      */
     private $number_of_persons;
+
+    /**
+     * @var string
+     */
+    private $commentary;
 
     /**
      * @var string
@@ -114,6 +124,29 @@ class Subscriber {
     }
 
     /**
+     * Set email
+     *
+     * @param string $email
+     * @return Subscriber
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
      * Set number_of_persons
      *
      * @param integer $numberOfPersons
@@ -134,6 +167,29 @@ class Subscriber {
     public function getNumberOfPersons()
     {
         return $this->number_of_persons;
+    }
+
+    /**
+     * Set commentary
+     *
+     * @param string $commentary
+     * @return Subscriber
+     */
+    public function setCommentary($commentary)
+    {
+        $this->commentary = $commentary;
+
+        return $this;
+    }
+
+    /**
+     * Get commentary
+     *
+     * @return string 
+     */
+    public function getCommentary()
+    {
+        return $this->commentary;
     }
 
     /**
@@ -160,9 +216,31 @@ class Subscriber {
     }
 
     /**
+     * Set total_price
+     *
+     * @param string $totalPrice
+     * @return Subscriber
+     */
+    public function setTotalPrice($totalPrice)
+    {
+        $this->total_price = $totalPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get total_price
+     *
+     * @return string 
+     */
+    public function getTotalPrice()
+    {
+        return $this->total_price;
+    }
+
+    /**
      * Set created
      *
-     * @param \DateTime
      * @return Subscriber
      */
     public function setCreated()
@@ -228,83 +306,59 @@ class Subscriber {
         return $this->ticket;
     }
     /**
-     * @var string
+     * @var integer
      */
-    private $email;
+    private $number_of_price1;
+
+    /**
+     * @var integer
+     */
+    private $number_of_price2;
 
 
     /**
-     * Set email
+     * Set number_of_price1
      *
-     * @param string $email
+     * @param integer $numberOfPrice1
      * @return Subscriber
      */
-    public function setEmail($email)
+    public function setNumberOfPrice1($numberOfPrice1)
     {
-        $this->email = $email;
+        $this->number_of_price1 = $numberOfPrice1;
 
         return $this;
     }
 
     /**
-     * Get email
+     * Get number_of_price1
      *
-     * @return string 
+     * @return integer 
      */
-    public function getEmail()
+    public function getNumberOfPrice1()
     {
-        return $this->email;
+        return $this->number_of_price1;
     }
-    /**
-     * @var string
-     */
-    private $commentary;
-
 
     /**
-     * Set commentary
+     * Set number_of_price2
      *
-     * @param string $commentary
+     * @param integer $numberOfPrice2
      * @return Subscriber
      */
-    public function setCommentary($commentary)
+    public function setNumberOfPrice2($numberOfPrice2)
     {
-        $this->commentary = $commentary;
+        $this->number_of_price2 = $numberOfPrice2;
 
         return $this;
     }
 
     /**
-     * Get commentary
+     * Get number_of_price2
      *
-     * @return string 
+     * @return integer 
      */
-    public function getCommentary()
+    public function getNumberOfPrice2()
     {
-        return $this->commentary;
-    }
-
-
-    /**
-     * Set total_price
-     *
-     * @param string $totalPrice
-     * @return Subscriber
-     */
-    public function setTotalPrice($totalPrice)
-    {
-        $this->total_price = $totalPrice;
-
-        return $this;
-    }
-
-    /**
-     * Get total_price
-     *
-     * @return string 
-     */
-    public function getTotalPrice()
-    {
-        return $this->total_price;
+        return $this->number_of_price2;
     }
 }
