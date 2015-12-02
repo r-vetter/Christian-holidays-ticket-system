@@ -19,12 +19,17 @@ TicketBundle\Entity\Subscriber:
             type: string
             length: 255
 
-        number_of_persons:
+        number_of_price1:
+            type: integer
+            nullable: true
+
+        number_of_price2:
             type: integer
             nullable: true
 
         commentary:
             type: text
+            nullable: true
 
         payment_state:
             type: string

@@ -11,6 +11,10 @@ ticket_edit:
     requirements:
             id:  \d+
 
+export_subscribers:
+    path: /exportsubscribers
+    defaults: { _controller: TicketBundle:Subscriber:exportSubscribers }
+
 subscriber_frondend_overview:
     path: /overzicht
     defaults: { _controller: TicketBundle:Subscriber:frontendOverview }
@@ -18,6 +22,12 @@ subscriber_frondend_overview:
 subscriber_edit:
     path: /subscriber/edit/{id}
     defaults: { _controller: TicketBundle:Subscriber:edit, id:new }
+
+subscriber_download_pdf:
+    path: /downloadTicketPdf/{id}
+    defaults: { _controller: TicketBundle:Subscriber:downloadPdf }
+    requirements:
+            id:  \d+
 
 subscriber_frondend_reset:
     path: /reset/{id}
