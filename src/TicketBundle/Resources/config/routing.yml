@@ -11,6 +11,10 @@ ticket_edit:
     requirements:
             id:  \d+
 
+export_subscribers:
+    path: /exportsubscribers
+    defaults: { _controller: TicketBundle:Subscriber:exportSubscribers }
+
 subscriber_frondend_overview:
     path: /overzicht
     defaults: { _controller: TicketBundle:Subscriber:frontendOverview }

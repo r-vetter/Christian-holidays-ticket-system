@@ -1,0 +1,42 @@
+<table border="1" id="ReportTable" class="myClass">
+    <tr bgcolor="#CCC">
+        <td >#</td>
+        <td>Voornaam</td>
+        <td>Achternaam</td>
+        <td >E-mail</td>
+        <td >{{ ticket.price1Title }}</td>
+        {% if ticket.price2Title != '' %}
+            <td >{{ ticket.price2Title }}</td>
+        {% endif %}
+        <td>Betaal status</td>
+        <td >Betaald via onmikassa</td>
+        <td>Gemaakt</td>
+        <td >Opmerking</td>
+    </tr>
+    {% for subscriber in ticket.subscribers %}
+    <tr bgcolor="#FFFFFF">
+        <td>{{ subscriber.id }}</td>
+        <td>{{ subscriber.firstname }}</td>
+        <td>{{ subscriber.lastname }}</td>
+        <td>{{ subscriber.email }}</td>
+        <td>{{ subscriber.numberOfPrice1 }}</td>
+        {% if ticket.price2Title != '' %}
+            <td>{{ subscriber.numberOfPrice2 }}</td>
+        {% endif %}
+        <td>
+            {% if subscriber.paymentState == 'paid' %}
+                Betaald
+            {% elseif subscriber.paymentState == 'created' %}
+                Niet betaald
+            {% elseif subscriber.paymentState == 'order_submit' %}
+                Niet betaald
+            {% else %}
+                Betaling mislukt
+            {% endif %}
+        </td>
+        <td>{{ subscriber.totalPrice }}</td>
+        <td>{{ subscriber.created|date('d-m-Y') }}</td>
+        <td>{{ subscriber.commentary }}</td>
+    </tr>
+    {% endfor %}
+</table>
