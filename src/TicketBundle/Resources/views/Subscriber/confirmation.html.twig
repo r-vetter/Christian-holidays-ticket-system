@@ -3,9 +3,13 @@
     {% block content %}
         {{ parent() }}
         <div>
-            <h1>{{ item.ticket.title }}</h1>
-            <h1>{{ item.firstName }}</h1>
-            <p>{{ omnikassa_html|raw }}</p><br>
+            <h1><i class="fa fa-ticket"></i> {{ item.ticket.title }}</h1>
+            <h3>{{ item.firstName }} {{ item.lastName }}</h3>
+            <p>{{ omnikassa_html|raw }}</p>
+            <br>
+            {% if downloadPdfLink %}
+            <a class="btn btn-success" href="{{ path('subscriber_download_pdf',{'id':item.id}) }}" target="_blank"><i class="fa fa-file-pdf-o"></i> Download ticket</a>
+            {% endif %}
 
         </div>
     {% endblock %}

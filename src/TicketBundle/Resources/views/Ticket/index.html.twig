@@ -6,8 +6,9 @@
         {{ parent() }}
 
         <div >
-            <a href="{{ path('ticket_edit', {'id': ticket.id}) }}" class="btn btn-info"><i class="fa fa-cog"></i> Ticket instellingen</a>
             <a href="{{ path('subscriber_edit') }}" class="btn btn-success"><span class="fa fa-plus"></span> Inschrijving toevoegen</a>
+            <a href="{{ path('ticket_edit', {'id': ticket.id}) }}" class="btn btn-link pull-right"><i class="fa fa-cog"></i> Ticket instellingen</a>
+            <a href="{{ path('export_subscribers') }}" class="btn btn-link pull-right" title="Downloaden naar een excel bestand"><span class="fa fa-download"></span> Exporteren</a>
         </div>
         <form method="post">
             <div class="table-responsive">
@@ -17,8 +18,11 @@
                         {#<th class="mini"><input type="checkbox" id="selectall"/></th>#}
                         <th class="mini">#</th>
                         <th>Naam</th>
-                        <th>Aantal personen</th>
-                        <th colspan>Datum</th>
+                        <th>{{ ticket.price1Title }}</th>
+                        {% if ticket.price2Title != '' %}
+                            <th>{{ ticket.price2Title }}</th>
+                        {% endif %}
+                        <th colspan>Gemaakt op</th>
                         <th>Betaald</th>
                         <th></th>
                     </tr>
@@ -35,10 +39,13 @@
                             {#</th>#}
                             <td scope="row">{{ item.id }}</td>
                             <td><a href="{{ path('subscriber_edit', {'id': item.id}) }}">{{ item.firstname }} {{ item.lastname }}</a></td>
-                            <td>{{ item.numberOfPersons }}</td>
+                            <td>{{ item.numberOfPrice1 }}</td>
+                            {% if ticket.price2Title != '' %}
+                                <td>{{ item.numberOfPrice2 }}</td>
+                            {% endif %}
                             <td>{{ item.created|date('Y-m-d H:i:s') }}</td>
-                            <td>{% if item.paymentState == 'paid' %}<span class="fa fa-check"></span>{% else %}<span class="fa fa-remove"></span>{% endif %}</td>
-                            <td><a href="{{ path('subscriber_edit', {'id': item.id}) }}"><span class="fa fa-edit"></span> </a></td>
+                            <td>{% if item.paymentState == 'paid' %}<span class="fa fa-check" style="color: green;" ></span>{% else %}<span class="fa fa-remove" style="color: red;"></span>{% endif %}</td>
+                            <td><a href="{{ path('subscriber_edit', {'id': item.id}) }}"><span class="fa fa-edit"></span> Aanpassen</a></td>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -48,7 +55,7 @@
             {#<input type="submit" tabindex="-1" class="btn" name="deletePages" value="Verwijderen"/>#}
         </form>
     {% endblock %}
-
+{#
 {% block javascripts_ready %}
     {{ parent() }}
     <script>
@@ -57,4 +64,4 @@
 
         });
     </script>
-{% endblock %}
+{% endblock %}#}

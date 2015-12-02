@@ -1,0 +1,35 @@
+To: reindert@outlook.com
+Subject: Dit is een test
+Date: Wed, 18 Nov 2015 23:34:22 +0100
+X-Sender: Reindert Vetter <info@uwwebmaster.nl>
+Errors-To: Reindert Vetter <info@uwwebmaster.nl>
+X-Mailer: PHP
+X-Priority: 3
+From: Reindert Vetter <info@uwwebmaster.nl>
+Return-Path: Reindert Vetter <info@uwwebmaster.nl>
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+	 boundary="----=_001"
+
+This is a multi-part message in MIME format.
+
+------=_001
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+In de bijlage kan je de ticket vinden
+
+
+------=_001
+Content-Type: application/octetstream;
+ name="test.pdf"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+ filename="test.pdf"
+
+
+
+
+
+------=_001--
+

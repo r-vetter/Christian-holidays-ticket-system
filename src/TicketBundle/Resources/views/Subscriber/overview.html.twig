@@ -9,7 +9,7 @@
                     <a href="{{ path('subscriber_frondend_reset',{'id':item.ticket.id}) }}" class="btn btn-info"><i class="fa fa-refresh"></i> Opnieuw</a>
                 </div>
             {% endif %}
-            <h1>{{ item.ticket.title }}</h1>
+            <h1><i class="fa fa-ticket"></i> {{ item.ticket.title }}</h1>
             <div class="form-horizontal">
                 <div id="form">
                     <div class="form-group">
@@ -42,22 +42,23 @@
                             <div class="checkbox">{{ orderState }}</div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label " for="form_number_of_persons">Aantal personen</label>
+                    <div class="form-group"><label class="col-sm-3 control-label " for="form_payment_state">{{ item.ticket.price1Title }}</label>
                         <div class="col-sm-9">
-                            <div class="checkbox">{{ item.numberOfPersons }}</div>
+                            <div class="checkbox">{{ item.numberOfPrice1 }}</div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label " for="form_number_of_persons">Prijs per persoon</label>
-                        <div class="col-sm-9">
-                            <div class="checkbox">&#8364; {{ item.ticket.price|number_format(2,',') }}</div>
+                    {% if item.ticket.price2Title != '' %}
+                        <div class="form-group"><label class="col-sm-3 control-label " for="form_payment_state">{{ item.ticket.price2Title }}</label>
+                            <div class="col-sm-9">
+                                <div class="checkbox">{{ item.numberOfPrice2 }}</div>
+                            </div>
                         </div>
-                    </div>
+                    {% endif %}
+
                     <div class="form-group">
                         <label class="col-sm-3 control-label " for="form_number_of_persons">Totaal prijs incl. btw</label>
                         <div class="col-sm-9">
-                            <div class="checkbox">&#8364; {{ (item.numberOfPersons * item.ticket.price)|number_format(2,',') }}</div>
+                            <div class="checkbox">&#8364; {{ item.totalPrice|number_format(2,',') }}</div>
                         </div>
                     </div>
 

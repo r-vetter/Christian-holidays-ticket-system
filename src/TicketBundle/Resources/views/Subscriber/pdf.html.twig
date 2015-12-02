@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <style>
+        .well{
+            display: block;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px 10px 10px 10px;
+            -moz-border-radius: 10px 10px 10px 10px;
+            -webkit-border-radius: 10px 10px 10px 10px;
+            border: 2px inset #c7c7c7;
+            background-color: rgb(238, 238, 238);
+            margin-bottom: 10px;
+        }
+        .naw* {
+            text-align: left;
+
+        }
+        table{
+            width: 100%;
+            text-align: left;
+
+        }
+        .td-first{
+            width: 25%;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <div class="well header">
+
+        <h1>Ticket {{ subscriber.id }}</h1>
+        <h2>{{ subscriber.ticket.titleBusiness }}</h2>
+        <h3>{{ subscriber.ticket.title }} | {{ subscriber.ticket.dateTime }}</h3>
+    </div>
+    <div class="well naw-info">
+        <table>
+            <tr><th colspan="2">NAW-gegevens</th></tr>
+            <tr>
+                <td class="td-first">Voornaam</td>
+                <td>{{ subscriber.firstName }}</td>
+            </tr>
+            <tr>
+                <td class="td-first">Achternaam</td>
+                <td>{{ subscriber.lastName }}</td>
+            </tr>
+            <tr>
+                <td class="td-first">E-mail</td>
+                <td>{{ subscriber.email }}</td>
+            </tr>
+            <tr>
+                <td class="td-first">Opmerking</td>
+                <td>{{ subscriber.commentary }}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="well ticket-info">
+        <table>
+            <tr>
+                <th colspan="2">Ticket details</th>
+            </tr>
+            <tr>
+                <td class="td-first">Datum en tijd</td>
+                <td>{{ subscriber.ticket.dateTime }}</td>
+            </tr>
+            <tr>
+                <td class="td-first">Adres</td>
+                <td>{{ subscriber.ticket.address|nl2br }}</td>
+            </tr>
+            <tr>
+                <td class="td-first">{{ subscriber.ticket.price1Title }}</td>
+                <td>{{ subscriber.numberOfPrice1 }}</td>
+            </tr>
+            {% if subscriber.ticket.price2Title != '' %}
+                <tr>
+                    <td class="td-first">{{ subscriber.ticket.price2Title }}</td>
+                    <td>{{ subscriber.numberOfPrice2 }}</td>
+                </tr>
+            {% endif %}
+            <tr style="font-weight:bold;">
+                <td class="td-first">Totaal prijs</td>
+                <td>&#8364;{{ subscriber.totalPrice|number_format(2,',') }}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="footer">
+        {{ subscriber.ticket.description|nl2br }}
+    </div>
+
+</div>
+</body>
+</html>
