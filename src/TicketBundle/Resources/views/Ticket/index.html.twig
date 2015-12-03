@@ -4,7 +4,7 @@
 
     {% block content %}
         {{ parent() }}
-
+{#test1#}
         <div >
             <a href="{{ path('subscriber_edit') }}" class="btn btn-success"><span class="fa fa-plus"></span> Inschrijving toevoegen</a>
             <a href="{{ path('ticket_edit', {'id': ticket.id}) }}" class="btn btn-link pull-right"><i class="fa fa-cog"></i> Ticket instellingen</a>
