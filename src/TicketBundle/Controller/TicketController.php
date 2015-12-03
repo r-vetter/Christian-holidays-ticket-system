@@ -70,7 +70,6 @@ class TicketController extends Controller
 
     }
 
-
     public function addAction(Request $request)
     {
         $this->editAction('new',$request);
