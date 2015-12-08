@@ -7,6 +7,10 @@
         <div>
             <div class="row">
                 <a href="{{ path('ticket',{'id':ticket.id}) }}" class="btn btn-info"><i class="fa fa-arrow-left"></i> Terug</a>
+
+                {% if item.paymentState == 'paid' %}
+                    <a class="btn btn-link pull-right" href="{{ path('subscriber_download_pdf',{'id':item.id}) }}" target="_blank"><i class="fa fa-file-pdf-o"></i> Download ticket</a>
+                {% endif %}
             </div>
             {{ form_start(form) }}
 
