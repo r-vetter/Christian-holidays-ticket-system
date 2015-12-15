@@ -37,7 +37,8 @@
 
 		$sUrl .= (sizeof($a) ? '/' . implode('/', $a) : '');
 
-
+		$sUrl = str_replace('/ticket/web', '', $sUrl);
+		
 		// Resultaat: http://www.domain.nl/map (geen / op het eind)
 		return $sUrl;
 	}

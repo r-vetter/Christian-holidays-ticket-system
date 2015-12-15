@@ -7,8 +7,8 @@
 
         <div >
             <a href="{{ path('subscriber_edit') }}" class="btn btn-success"><span class="fa fa-plus"></span> Inschrijving toevoegen</a>
-            <a href="{{ path('ticket_edit', {'id': ticket.id}) }}" class="btn btn-link pull-right"><i class="fa fa-cog"></i> Ticket instellingen</a>
-            <a href="{{ path('export_subscribers') }}" class="btn btn-link pull-right" title="Downloaden naar een excel bestand"><span class="fa fa-download"></span> Exporteren</a>
+            <a href="{{ path('ticket_edit', {'id': ticket.external}) }}" class="btn btn-link pull-right"><i class="fa fa-cog"></i> Ticket instellingen</a>
+            <a href="{{ path('export_subscribers') }}" class="btn btn-link pull-right {% if items|length == 0 %}disabled {% endif %}" title="Downloaden naar een excel bestand"><span class="fa fa-download"></span> Exporteren</a>
         </div>
         <form method="post">
             <div class="table-responsive">

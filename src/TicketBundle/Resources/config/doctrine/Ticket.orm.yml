@@ -23,6 +23,7 @@ TicketBundle\Entity\Ticket:
         address:
             type: string
             length: 255
+            nullable: true
 
         date_time:
             type: string
@@ -30,6 +31,7 @@ TicketBundle\Entity\Ticket:
 
         description:
             type: text
+            nullable: true
 
 
         price_1_title:
@@ -46,12 +48,14 @@ TicketBundle\Entity\Ticket:
         price_2_title:
             type: string
             length: 255
+            nullable: true
 
         price_2:
             type: decimal
             precision: 10
             scale: 2
             message: Geen letters toegestaan.
+            nullable: true
 
 
 

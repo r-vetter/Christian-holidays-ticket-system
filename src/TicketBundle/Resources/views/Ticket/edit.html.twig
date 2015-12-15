@@ -5,12 +5,14 @@
     {% block content %}
         {{ parent() }}
         <div>
+            {% if item.id %}
             <div class="row">
-                <a href="{{ path('ticket',{'id':item.id}) }}" class="btn btn-info"><i class="fa fa-list"></i> Overzicht van alle inschrijvingen</a>
+                <a href="{{ path('ticket',{'id':item.external}) }}" class="btn btn-info"><i class="fa fa-list"></i> Overzicht van alle inschrijvingen</a>
             </div>
+            {% endif %}
             <div class="" style="margin-top: 10px">
                 <div class="col-md-9 col-md-offset-3" style="padding-bottom: 10px">
-                    De volgende gegevens worden getoont op de ticket:
+                    De volgende gegevens worden getoond op de ticket:
                 </div>
                 {{ form_start(form) }}
                 {{ form_widget(form) }}
@@ -19,7 +21,7 @@
             <div class="jumbotron">
                 <h1>Uw website</h1>
                 <p>Gebruik de volgende code om bezoekers te laten inschrijven op uw website:</p>
-                <p><code>&lt;iframe src="edit.html.twig"/> </code></p>
+                <p><code>&lt;iframe src="http://christianholidays.guide/ticket/web/{{ item.id }}"/> </code></p>
             </div>
 
         </div>
