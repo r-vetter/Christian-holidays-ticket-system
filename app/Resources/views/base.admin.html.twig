@@ -6,9 +6,16 @@
     <title>{% block meta_title %}Beheerder{% endblock %}</title>
 
     {% block stylesheets %}
-        {% stylesheets 'bundles/base/assets/css/*' filter='cssrewrite' %}
+        {#{% stylesheets 'bundles/base/assets/css/*' filter='cssrewrite' %}
         <link rel="stylesheet" href="{{ asset_url }}" />
-        {% endstylesheets %}
+        {% endstylesheets %}#}
+
+
+        <link rel="stylesheet" href="{{ asset(('bundles/base/assets/css/bootstrap.min.css')) }}" />
+        <link rel="stylesheet" href="{{ asset(('bundles/base/assets/css/font-awesome.min.css')) }}" />
+        <link rel="stylesheet" href="{{ asset(('bundles/base/assets/css/jquery-ui.css')) }}" />
+        <link rel="stylesheet" href="{{ asset(('bundles/base/assets/css/main.admin.css')) }}" />
+        <link rel="stylesheet" href="{{ asset(('bundles/base/assets/css/main.css')) }}" />
     {% endblock %}
 
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />

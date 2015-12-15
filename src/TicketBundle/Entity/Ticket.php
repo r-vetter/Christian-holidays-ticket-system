@@ -20,11 +20,6 @@ class Ticket
     private $title;
 
     /**
-     * @var string
-     */
-    private $price;
-
-    /**
      * @var \Doctrine\Common\Collections\Collection
      */
     private $subscribers;
@@ -91,29 +86,6 @@ class Ticket
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * Set price
-     *
-     * @param string $price
-     * @return Ticket
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
-    /**
-     * Get price
-     *
-     * @return string 
-     */
-    public function getPrice()
-    {
-        return $this->price;
     }
 
     /**

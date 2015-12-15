@@ -13,7 +13,7 @@ if (!defined('__CLASS_PJ_MAIL__'))
 {
 	define('__CLASS_PJ_MAIL__', true);
 
-	require_once(dirname(__FILE__).'\\_simplemail\\class.mail.php');
+	require_once('_simplemail/class.mail.php');
 	
 	class PJmail extends simplemail
 	{

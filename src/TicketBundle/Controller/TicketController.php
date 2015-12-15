@@ -18,6 +18,9 @@ class TicketController extends Controller
 
         $ticket = $this->getDoctrine()->getRepository('TicketBundle:Ticket')->findOneBy(array('external'=>$id));
 
+        if($ticket == null){
+            return $this->redirect($this->generateUrl('ticket_edit',array('id' => $id)));
+        }
         $items = $ticket->getSubscribers();
 
         $response = new Response();
@@ -42,14 +45,24 @@ class TicketController extends Controller
 
         $defaultPriceTitle = $item->getPrice1Title() == '' ? 'Aantal personen' : $item->getPrice1Title();
         $form = $form
-            ->add('title', 'text', array('required'=> true, 'label' => 'Titel ticket'))
-            ->add('date_time', 'text', array('required'=> false, 'label' => 'Datum en tijd'))
-            ->add('title_business', 'text', array('required'=> false,'label' => 'Titel bedrijf'))
-            ->add('address', 'textarea', array('required'=> false,'label' => 'Adres'))
+            ->add('title', 'text', array('required'=> true, 'label' => 'Titel ticket',
+                'data' => $item->getTitle() == null ? $request->query->get('title') : $item->getTitle()
+            ))
+            ->add('date_time', 'text', array('required'=> true, 'label' => 'Datum en tijd',
+                'data' => $item->getDateTime() == null ? $request->query->get('date') : $item->getDateTime()
+            ))
+            ->add('title_business', 'text', array('required'=> true,'label' => 'Titel bedrijf',
+                'data' => $item->getTitleBusiness() == null ? $request->query->get('title_business') : $item->getTitleBusiness()
+            ))
+            ->add('address', 'textarea', array('required'=> false,'label' => 'Adres',
+                'data' => $item->getAddress() == null ? $request->query->get('address') : $item->getAddress()
+            ))
             ->add('description', 'textarea', array('required'=> false,'label' => 'Extra omschrijving', 'attr' => array('style'=>'margin-bottom:20px;')))
 
             ->add('price_1_title', 'text', array('required'=> true,'label' => 'Titel prijs 1', 'data'=> $defaultPriceTitle))
-            ->add('price1', 'money', array('required'=> true,'label' => 'Prijs 1'))
+            ->add('price1', 'money', array('required'=> true,'label' => 'Prijs 1',
+                'data' => $item->getPrice1() == null ? $request->query->get('price') : $item->getPrice1()
+            ))
             ->add('price_2_title', 'text', array('required'=> false,'label' => 'Titel prijs 2'))
             ->add('price2', 'money', array('required'=> false,'label' => 'prijs 2'))
 

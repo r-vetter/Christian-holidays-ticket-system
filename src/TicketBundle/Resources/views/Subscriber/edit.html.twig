@@ -4,12 +4,20 @@
 {% block meta_title %}{{ item.firstName }} {{ item.lastName }} &#10140; Ticket &#10140; {{ parent() }}{% endblock %}
     {% block content %}
         {{ parent() }}
+        <style>
+            .ani_start{
+                border-bottom: solid #fff medium;
+            }
+            .ani{
+                border-bottom: solid rgba(91, 192, 222, 0.73) medium;
+            }
+        </style>
         <div>
             <div class="row">
-                <a href="{{ path('ticket',{'id':ticket.id}) }}" class="btn btn-info"><i class="fa fa-arrow-left"></i> Terug</a>
+                <a href="{{ path('ticket',{'id':ticket.external}) }}" class="btn btn-info"><i class="fa fa-arrow-left"></i> Terug</a>
 
                 {% if item.paymentState == 'paid' %}
-                    <a class="btn btn-link pull-right" href="{{ path('subscriber_download_pdf',{'id':item.id}) }}" target="_blank"><i class="fa fa-file-pdf-o"></i> Download ticket</a>
+                    <a class="btn btn-link pull-right ani_start" href="{{ path('subscriber_download_pdf',{'id':item.id}) }}" target="_blank"><i class="fa fa-file-pdf-o"></i> Download ticket</a>
                 {% endif %}
             </div>
             {{ form_start(form) }}
@@ -28,3 +36,18 @@
 
         </div>
     {% endblock %}
+
+{% block javascripts_ready %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function() {
+            setTimeout(function(){
+                    $('.ani_start').addClass("ani", 1000);
+            }, 1000);
+            setTimeout(function(){
+                    $('.ani_start').removeClass("ani", 1000);
+            }, 4000);
+
+        });
+    </script>
+{% endblock %}
